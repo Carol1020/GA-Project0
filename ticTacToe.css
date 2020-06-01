@@ -1,0 +1,40 @@
+
+*, *::after, *::before {
+  box-sizing: border-box; /* If you set box-sizing: border-box; on an element, padding and border are included in the width and height */
+}
+
+body {
+  margin: 0;
+}
+
+.board {
+  width: 100vw; /* A percentage of the full viewport width. */
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, auto); /* repeat(#columns, sizeOfColumns) */
+}
+
+.cell {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border: 0.1em solid black;
+}
+
+.cell:first-child, .cell:nth-child(2), .cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:first-child, .cell:nth-child(4), .cell:nth-child(7) {
+  border-left: none;
+}
+
+.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) {
+  border-bottom: none;
+}
+
+.cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9) {
+  border-right: none;
+}
