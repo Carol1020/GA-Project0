@@ -3,8 +3,22 @@
   box-sizing: border-box; /* If you set box-sizing: border-box; on an element, padding and border are included in the width and height */
 }
 
+:root {
+  /* :custom properties */
+  --cell-width: 200px;
+  --cell-height: 200px;
+}
+
 body {
   margin: 0;
+}
+
+h1 {
+  margin: auto;
+  font-size: 5em;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
 }
 
 .board {
@@ -14,13 +28,19 @@ body {
   justify-content: center;
   align-content: center;
   grid-template-columns: repeat(3, auto); /* repeat(#columns, sizeOfColumns) */
+  align-items: center;
+  justify: center;
 }
 
 .cell {
-  width: 200px;
-  height: 200px;
+  width: var(--cell-width);
+  height: var(--cell-height);
   background-color: white;
   border: 0.1em solid black;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
 }
 
 .cell:first-child, .cell:nth-child(2), .cell:nth-child(3) {
@@ -38,3 +58,114 @@ body {
 .cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9) {
   border-right: none;
 }
+
+
+/* REVIEW: player 1 with cross */
+.cell.cross::before, .cell.cross::after {
+  content:"";
+  width: calc(var(--cell-width)*0.2);
+  height: calc(var(--cell-height)*0.9);
+  background-color: yellow;
+  position: absolute;
+}
+.cell.cross::before {
+
+  transform: rotate(45deg);
+}
+.cell.cross::after {
+  transform: rotate(-45deg);
+}
+
+/* REVIEW: player 2 with hollow circle */
+.cell.hollowCircle::before,
+.cell.hollowCircle::after {
+  content:"";
+  width: calc(var(--cell-width)*0.9);
+  height: calc(var(--cell-height)*0.9);
+  background-color: white;
+  border-radius: 50%;
+  border: calc(var(--cell-width)*0.2) solid red;
+  position: absolute;
+}
+
+/* when player 1 (cross) hover the game board; no effect if there's already filled with cross/circle */
+.board.cross .cell:not(.cross):not(.hollowCircle):hover::before,
+.board.cross .cell:not(.cross):not(.hollowCircle):hover::after {
+  content:"";
+  width: calc(var(--cell-width)*0.2);
+  height: calc(var(--cell-height)*0.9);
+  background-color: grey;
+  position: absolute;
+}
+
+.board.cross .cell:not(.cross):not(.hollowCircle):hover::before {
+  transform: rotate(45deg);
+}
+.board.cross .cell:not(.cross):not(.hollowCircle):hover::after {
+  transform: rotate(-45deg);
+}
+
+/* when player 2 (hollowCircle) hover the game board; no effect if there's already filled with cross/circle */
+.board.hollowCircle .cell:not(.cross):not(.hollowCircle):hover::before,
+.board.hollowCircle .cell:not(.cross):not(.hollowCircle):hover::after {
+  content:"";
+  width: calc(var(--cell-width)*0.9);
+  height: calc(var(--cell-height)*0.9);
+  background-color: white;
+  border-radius: 50%;
+  border: calc(var(--cell-width)*0.2) solid grey;
+  position: absolute;
+}
+
+div.winningMessage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messageText {
+  color: white;
+  font-size: 5em;
+}
+
+#restartButton {
+  font-size: 5em;
+  padding: 15px 32px;
+}
+
+/* .hollowCircle {
+  background: white;
+  width: calc(var(--cell-width)*0.75);
+  height: calc(var(--cell-height)*0.75);
+  border-radius: 50%;
+  border: 30px solid black;
+  display: inline-block;
+  position: relative;
+  margin-left: 100px;
+} */
+
+
+/* .cross {
+  margin-left: 20em;
+  background: black;
+  height: calc(var(--cell-height)*0.8);
+  width: 30px;
+  position: absolute;
+  transform: rotate(45deg);
+}
+.cross:after  {
+  background: black;
+  content: "";
+  height: calc(var(--cell-width)*0.8);
+  width: 30px;
+  position: absolute;
+  transform: rotate(-90deg);
+} */
+
+  /* https://css-tricks.com/the-shapes-of-css/ */
