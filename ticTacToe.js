@@ -28,24 +28,41 @@ $(document).ready(function () {
 
   const restartButton = $("#restartButton");
 
+
+  let isGameWon = false;
+
+  const win = function () {
+    let isGameWon = true;
+    let isWin = false;
+    for (let i=0; i<winningConditions.length; i++) {
+      if ((winningConditions[i]).filter(".cross").length === 3 ||
+      (winningConditions[i]).filter(".hollowCircle").length === 3) {
+        isWin = true;
+      }
+    } return isWin;
+  }
+
+
+  const checkForDraw = function () {
+    let drawAgain = false;
+    if (cells.filter(".cross, .hollowCircle").length === 9 && win() === false) {
+        drawAgain = true;
+    }
+    return drawAgain;
+  }
+
+
+  const restart = function() {
+      // remove text
+      $(".winningMessage").hide();
+      cells.removeClass(crossClass).removeClass(circleClass);
+  };
+
+
   $("div.board").addClass(crossClass);
   //show hover
 
   $("div.winningMessage").hide();
-
-  const restart = function() {
-    // remove text
-    $(".winningMessage").hide();
-
-    cells.removeClass(crossClass).removeClass(circleClass);
-  };
-
-
-
-// (winningConditions[i]).filter(".cross").length === 3
-
-
-
 
   cells.click( function() {
     if ($(this).is('.hollowCircle, .cross')) {
@@ -60,33 +77,30 @@ $(document).ready(function () {
       $('.board').toggleClass(circleClass).toggleClass(crossClass);
       //change hover
 
-      for (let i=0; i<winningConditions.length; i++) {
-        if ((winningConditions[i]).filter(".cross").length === 3) {
-          $(".messageText").text(`Congratulation! X won the game!`);
-          $(".winningMessage").show();
-        }
+      if (win() === true) {
+        $(".messageText").text(`Congratulation! X won the game!`);
+        $(".winningMessage").show();
       }
     }
+
 
     if (turn % 2 === 0) { // switch turns to player2
       $(this).addClass(circleClass);
 
       $('.board').toggleClass(circleClass).toggleClass(crossClass);
 
-      for (let i=0; i<winningConditions.length; i++) {
-        if ((winningConditions[i]).filter(".hollowCircle").length === 3) {
-          $(".messageText").text(`Congratulation! O won the game!`);
-          // TODO: still showing x won the game.
-          $(".winningMessage").show();
-        }
+
+      if (win() === true) {
+        $(".messageText").text(`Congratulation! O won the game!`);
+        $(".winningMessage").show();
       }
     }
 
-    // if () {
-    //   $(".messageText").text(`No winner. Draw again!`);
-    //   $(".winningMessage").show();
-    // };
-// TODO: add event listener for button. When clicked, page refresh/back to origin.
+    if (checkForDraw() === true) {
+      $(".messageText").text(`There's no winner. Please draw again!`);
+      $(".winningMessage").show();
+    }
+    // Add event listener for button. When clicked, page refresh/back to origin.
     $("#restartButton").click(restart);
   })
 })

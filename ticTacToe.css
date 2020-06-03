@@ -139,33 +139,6 @@ div.winningMessage {
   padding: 15px 32px;
 }
 
-/* .hollowCircle {
-  background: white;
-  width: calc(var(--cell-width)*0.75);
-  height: calc(var(--cell-height)*0.75);
-  border-radius: 50%;
-  border: 30px solid black;
-  display: inline-block;
-  position: relative;
-  margin-left: 100px;
-} */
 
-
-/* .cross {
-  margin-left: 20em;
-  background: black;
-  height: calc(var(--cell-height)*0.8);
-  width: 30px;
-  position: absolute;
-  transform: rotate(45deg);
-}
-.cross:after  {
-  background: black;
-  content: "";
-  height: calc(var(--cell-width)*0.8);
-  width: 30px;
-  position: absolute;
-  transform: rotate(-90deg);
-} */
 
   /* https://css-tricks.com/the-shapes-of-css/ */
