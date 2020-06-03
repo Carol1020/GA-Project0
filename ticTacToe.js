@@ -16,12 +16,13 @@ $(document).ready(function () {
 
   const cells = $("div.cell");
 
-  //support custom board sizes
-  const numOfColumns = Math.sqrt(cells.length);
+  // //support custom board sizes
+  // const numOfColumns = Math.sqrt(cells.length);
+  //
+  // const numOfrows = numOfColumns;
+  //
+  // console.log(typeof(numOfColumns));
 
-  const numOfrows = numOfColumns;
-
-  // console.log(typeOf(numOfrows));
 
   const winningConditions = [
     // Vertical cells:
