@@ -104,7 +104,7 @@ $(document).ready(function () {
 
   $("div.board").addClass(crossClass);
   //show hover
-  $(".turn").text("PLAYER 1 turn");
+  $(".turn").text(`${ player1Name } turn`);
   $(".turn").css('color', 'blue');
 
   $(".winningMessage").hide();
@@ -120,7 +120,7 @@ $(document).ready(function () {
       $(this).addClass(crossClass);
       //draw cross
 
-      $(".turn").text("PLAYER 2 turn");
+      $(".turn").text(`${ player2Name } turn`);
       $(".turn").css('color', 'red');
       $(".board").toggleClass(circleClass).toggleClass(crossClass);
       //change hover
@@ -137,7 +137,7 @@ $(document).ready(function () {
     if (turn % 2 === 0) { // switch turns to player2
       $(this).addClass(circleClass);
 
-      $(".turn").text("PLAYER 1 turn");
+      $(".turn").text(`${ player1Name } turn`);
       $(".turn").css('color', 'blue');
 
       $('.board').toggleClass(circleClass).toggleClass(crossClass);

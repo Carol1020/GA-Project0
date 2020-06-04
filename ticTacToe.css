@@ -73,6 +73,7 @@ main {
   font-size: 2em;
 }
 
+
 .board {
   width: 100vw; /* A percentage of the full viewport width. */
   height: 50vh;
@@ -184,6 +185,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.blackDog {
+  width: 30%;
+  height: 30%;
 }
 
 .player1Name, .player2Name {
