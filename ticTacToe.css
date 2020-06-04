@@ -2,7 +2,6 @@
 
 *, *::after, *::before {
   box-sizing: border-box;
-  /* If you set box-sizing: border-box; on an element, padding and border are included in the width and height */
 }
 
 :root {
@@ -22,12 +21,6 @@ body {
   text-align: center;
 }
 
-/* .navbar {
-  max-width: 1600px;
-  display: flex;
-  justify-content: flex-end;
-  list-style: none;
-} */
 
 header {
   text-align: center;
@@ -80,8 +73,7 @@ main {
   display: grid;
   justify-content: center;
   align-content: center;
-  grid-template-columns: repeat(3, auto); /* repeat(#columns, sizeOfColumns) */
-  /* $( "div.example" ).css(propertyName, function)  */
+  grid-template-columns: repeat(3, auto);
   align-items: center;
   text-align: center;
 }
