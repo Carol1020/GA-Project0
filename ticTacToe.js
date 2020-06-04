@@ -5,6 +5,9 @@ let roundCounter = 1;
 let crossCounter = 0;
 let circleCounter = 0;
 let drawCounter = 0;
+let player1Name = "";
+let player2Name = "";
+
 
 
 
@@ -14,8 +17,37 @@ let drawCounter = 0;
 
 $(document).ready(function () {
 
-  const cells = $("div.cell");
+  // Enter users' names.
 
+  $("header, main, .winningMessage").hide();
+
+
+  $("#nameButton").click(function(){
+    if ($(".player1Name").val().length >0) {
+      player1Name = $(".player1Name").val();
+    } else {
+      player1Name = "PLAYER 1";
+    }
+
+    if ($(".player2Name").val().length >0) {
+      player2Name = $(".player2Name").val();
+    } else {
+      player2Name = "PLAYER 2";
+    }
+
+    $(".player1").text(`${ player1Name }`);
+    $(".player2").text(`${ player2Name }`);
+
+    $(".playerDetails").hide();
+    $("header, main").show();
+  })
+
+
+
+
+
+  //Game Starts
+  const cells = $("div.cell");
 
   const winningConditions = [
     // Vertical cells:
@@ -57,10 +89,9 @@ $(document).ready(function () {
   }
 
 
-
-
   const restart = function() {
       // remove text
+      $(".playerDetails").hide();
       $(".winningMessage").hide();
       cells.removeClass(crossClass).removeClass(circleClass);
       $(".roundCounter").text(`Round: ${roundCounter}`);
@@ -73,12 +104,15 @@ $(document).ready(function () {
 
   $("div.board").addClass(crossClass);
   //show hover
-  $(".turn").text("player 1 turn");
+  $(".turn").text("PLAYER 1 turn");
+  $(".turn").css('color', 'blue');
+
   $(".winningMessage").hide();
 
   cells.click( function() {
     if ($(this).is('.hollowCircle, .cross')) {
-      return;} //excluding non-empty cells
+      return;
+    } //excluding non-empty cells
 
     turn++ //switch turns
 
@@ -86,7 +120,8 @@ $(document).ready(function () {
       $(this).addClass(crossClass);
       //draw cross
 
-      $(".turn").text("player 2 turn");
+      $(".turn").text("PLAYER 2 turn");
+      $(".turn").css('color', 'red');
       $(".board").toggleClass(circleClass).toggleClass(crossClass);
       //change hover
 
@@ -102,7 +137,8 @@ $(document).ready(function () {
     if (turn % 2 === 0) { // switch turns to player2
       $(this).addClass(circleClass);
 
-      $(".turn").text("player 1 turn");
+      $(".turn").text("PLAYER 1 turn");
+      $(".turn").css('color', 'blue');
 
       $('.board').toggleClass(circleClass).toggleClass(crossClass);
 
@@ -116,7 +152,7 @@ $(document).ready(function () {
     }
 
     if (checkForDraw() === true) {
-      $(".messageText").text(`There's no winner. Please draw again! `);
+      $(".messageText").text(`No winner. Draw again! `);
       $(".winningMessage").show();
       drawCounter++;
       roundCounter++;
