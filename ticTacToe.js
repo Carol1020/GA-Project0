@@ -104,7 +104,7 @@ $(document).ready(function () {
 
   $("div.board").addClass(crossClass);
   //show hover
-  $(".turn").text(`${ player1Name } turn`);
+  $(".turn").text(`${ player1Name } Turn`);
   $(".turn").css('color', 'blue');
 
   $(".winningMessage").hide();
@@ -120,13 +120,13 @@ $(document).ready(function () {
       $(this).addClass(crossClass);
       //draw cross
 
-      $(".turn").text(`${ player2Name } turn`);
+      $(".turn").text(`${ player2Name } Turn`);
       $(".turn").css('color', 'red');
       $(".board").toggleClass(circleClass).toggleClass(crossClass);
       //change hover
 
       if (win() === true) {
-        $(".messageText").text(`Congratulation! X won the game! `);
+        $(".messageText").text(`Congratulation! ${ player1Name } won the game! `);
         $(".winningMessage").show();
         crossCounter++;
         roundCounter++;
@@ -137,14 +137,14 @@ $(document).ready(function () {
     if (turn % 2 === 0) { // switch turns to player2
       $(this).addClass(circleClass);
 
-      $(".turn").text(`${ player1Name } turn`);
+      $(".turn").text(`${ player1Name } Turn`);
       $(".turn").css('color', 'blue');
 
       $('.board').toggleClass(circleClass).toggleClass(crossClass);
 
 
       if (win() === true) {
-        $(".messageText").text(`Congratulation! O won the game! `);
+        $(".messageText").text(`Congratulation! ${ player2Name } won the game! `);
         $(".winningMessage").show();
         circleCounter++;
         roundCounter++;
