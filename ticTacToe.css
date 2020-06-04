@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  background-color: pink;
+  background-color: #e3798c61;
   font-family: 'Righteous', cursive;
   font-family: 'Shadows Into Light', cursive;
   display: inline-block;
@@ -22,18 +22,52 @@ body {
   text-align: center;
 }
 
+/* .navbar {
+  max-width: 1600px;
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+} */
+
 header {
   text-align: center;
 }
 
 h1 {
-  padding: 1em 0;
   font-size: 5em;
-  margin: auto;
+  margin: 1em 0 0.5em 0;
+
 }
 
 main {
   text-align: center;
+}
+
+.counter {
+  font-size: 2em;
+  margin: 0 20em;
+  display:flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.crossCounter, .drawCounter, .circleCounter {
+  margin: 0 0.2em 0.5em 0.2em;
+  padding: 0 2em;
+}
+
+#crossCounter {
+  color: blue;
+}
+
+#circleCounter {
+  color: red;
+}
+
+.turn {
+  font-size: 2em;
 }
 
 .board {
@@ -43,6 +77,7 @@ main {
   justify-content: center;
   align-content: center;
   grid-template-columns: repeat(3, auto); /* repeat(#columns, sizeOfColumns) */
+  /* $( "div.example" ).css(propertyName, function)  */
   align-items: center;
   text-align: center;
 }
@@ -50,8 +85,11 @@ main {
 .cell {
   width: var(--cell-width);
   height: var(--cell-height);
-  background-color: white;
-  border: 0.1em solid black;
+  background-color: pink;
+  font-size: 2em;
+  color: white;
+  border: 0.15em solid white;
+  border-radius: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -131,24 +169,10 @@ main {
   position: absolute;
 }
 
-.counter {
-  font-size: 45px;
-  margin: 1em 0;
-  display:inline-block;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-}
 
 .roundCounter {
+  font-size: 3em;
   font-weight: bold;
-}
-
-.crossCounter, .circleCounter, .drawCounter {
-  margin: 0.2em;
-  padding: 0 2em;
-  background-color: white;
 }
 
 .winningMessage {

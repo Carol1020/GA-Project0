@@ -11,6 +11,13 @@
 
 </head>
 <body>
+
+  <!-- <nav>
+    <ul class="navbar">
+      <li><a href="file:///Users/carol/Projects/project0/home.html">Home</a></li>
+    </ul>
+  </nav> -->
+
   <header>
 
     <h1>Tic Tac Toe</h1>
@@ -18,6 +25,24 @@
   </header>
 
   <main>
+    <div class="counter">
+      <div id="crossCounter">
+        <p class="Player1"> PLAYER 1 </p>
+        <p class="crossCounter">0</p>
+      </div>
+
+      <div id="drawCounter">
+        <p class="ties">TIES</p>
+        <p class="drawCounter">0</p>
+      </div>
+
+      <div id="circleCounter">
+        <p class="player2">PLAYER 2 </p>
+        <p class="circleCounter">0</p>
+      </div>
+    </div>
+
+    <div class="turn"></div>
 
     <div class="board" id="board">
       <div class="cell">1</div>
@@ -31,12 +56,9 @@
       <div class="cell">9</div>
     </div>
 
-    <div class="counter">
-      <p class="roundCounter">Round: 1</p>
-      <p class="crossCounter"> Player 1 won 0 round.</p>
-      <p class="circleCounter">Player 2 won 0 round.</p>
-      <p class="drawCounter">No one won for 0 round.</p>
-    </div>
+
+    <p class="roundCounter">Round: 1</p>
+
 
   </main>
 
