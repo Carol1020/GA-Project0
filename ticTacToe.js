@@ -79,7 +79,6 @@ $(document).ready(function () {
     } return isWin;
   }
 
-
   const checkForDraw = function () {
     let drawAgain = false;
     if (cells.filter(".cross, .hollowCircle").length === cells.length && win() === false) {
